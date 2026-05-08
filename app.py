@@ -1,30 +1,42 @@
 import streamlit as st
 
-st.title("ML From Scratch 🚀")
+from components.navigation import run_navigation
 
-st.write("Welcome to ML From Scratch Project")
+# =====================================================
+# PAGE CONFIG
+# =====================================================
 
-algo = st.sidebar.selectbox(
-    "Choose Algorithm",
-    [
-        "Linear Regression",
-        "KNN",
-        "K-Means",
-        "Logistic Regression",
-        "Decision Tree",
-        "Naive Bayes",
-        "Perceptron"
-    ]
+st.set_page_config(
+    page_title="ML From Scratch",
+    page_icon="🚀",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-st.success(f"You selected: {algo}")
+# =====================================================
+# LOAD CSS
+# =====================================================
 
-st.write("More algorithms coming soon 🔥")
+with open("static/style.css", "r", encoding="utf-8") as f:
+    css = f.read()
 
-# if algo == "Linear Regression":
-#     from pages.linear_page import run
-#     run()
+st.markdown(
+    f"<style>{css}</style>",
+    unsafe_allow_html=True
+)
 
-# elif algo == "KNN":
-#     from pages.knn_page import run
-#     run()
+# =====================================================
+# RUN NAVIGATION
+# =====================================================
+
+run_navigation()
+
+# =====================================================
+# FOOTER
+# =====================================================
+
+st.markdown("""
+<div class="footer">
+    Made with Avinash Singh ❤️ Since 2026
+</div>
+""", unsafe_allow_html=True)
